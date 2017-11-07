@@ -311,6 +311,7 @@ public final class Tooltip {
             }
         };
         private int mPadding;
+        private int mTextPadding;
         private CharSequence mText;
         private Rect mViewRect;
         private View mView;
@@ -402,6 +403,7 @@ public final class Tooltip {
                 context.getTheme()
                     .obtainStyledAttributes(null, R.styleable.TooltipLayout, builder.defStyleAttr, builder.defStyleRes);
             this.mPadding = theme.getDimensionPixelSize(R.styleable.TooltipLayout_ttlm_padding, 30);
+            this.mTextPadding = theme.getDimensionPixelSize(R.styleable.TooltipLayout_ttlm_textPadding, 30);
             this.mTextAppearance = theme.getResourceId(R.styleable.TooltipLayout_android_textAppearance, 0);
             this.mTextGravity = theme
                 .getInt(R.styleable.TooltipLayout_android_gravity, android.view.Gravity.TOP | android.view.Gravity.START);
@@ -809,9 +811,12 @@ public final class Tooltip {
             if (null != mDrawable) {
                 mTextView.setBackgroundDrawable(mDrawable);
                 if (mHideArrow) {
-                    mTextView.setPadding(mPadding / 2, mPadding / 2, mPadding / 2, mPadding / 2);
+                    mTextView.setPadding(mTextPadding / 2,
+                            mTextPadding / 2,
+                            mTextPadding / 2,
+                            mTextPadding / 2);
                 } else {
-                    mTextView.setPadding(mPadding, mPadding, mPadding, mPadding);
+                    mTextView.setPadding(mTextPadding, mTextPadding, mTextPadding, mTextPadding);
                 }
             }
             this.addView(mView);
@@ -1040,7 +1045,7 @@ public final class Tooltip {
 
             if (null != mDrawable) {
                 getAnchorPoint(gravity, mTmpPoint);
-                mDrawable.setAnchor(gravity, mHideArrow ? 0 : mPadding / 2, mHideArrow ? null : mTmpPoint);
+                mDrawable.setAnchor(gravity, mHideArrow ? 0 : mPadding, mHideArrow ? null : mTmpPoint);
             }
 
             if (!mAlreadyCheck) {

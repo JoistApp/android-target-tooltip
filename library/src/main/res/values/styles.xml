@@ -3,6 +3,7 @@
 
     <style name="ToolTipLayoutDefaultStyle">
         <item name="ttlm_padding">@dimen/ttlm_default_padding</item>
+        <item name="ttlm_textPadding">@dimen/ttlm_default_padding</item>
         <item name="ttlm_strokeColor">@android:color/transparent</item>
         <item name="ttlm_backgroundColor">?attr/colorAccent</item>
         <item name="ttlm_strokeWeight">@dimen/ttlm_default_stroke_weight</item>
